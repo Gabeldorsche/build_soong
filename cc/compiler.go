@@ -366,7 +366,6 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	tc := ctx.toolchain()
 	modulePath := ctx.ModuleDir()
 
-<<<<<<< HEAD
 	reuseObjs := false
 	if len(ctx.GetDirectDepsWithTag(reuseObjTag)) > 0 {
 		reuseObjs = true
@@ -378,16 +377,6 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if !reuseObjs {
 		srcs = compiler.Properties.Srcs.GetOrDefault(ctx, nil)
 		exclude_srcs := compiler.Properties.Exclude_srcs.GetOrDefault(ctx, nil)
-	additionalIncludeDirs := ctx.DeviceConfig().TargetSpecificHeaderPath()
-	if len(additionalIncludeDirs) > 0 {
-		// devices can have multiple paths in TARGET_SPECIFIC_HEADER_PATH
-		// add -I in front of all of them
-		if (strings.Contains(additionalIncludeDirs, " ")) {
-			additionalIncludeDirs = strings.ReplaceAll(additionalIncludeDirs, " ", " -I")
-		}
-		flags.Local.CommonFlags = append(flags.Local.CommonFlags, "-I" + additionalIncludeDirs)
-	}
-
 		compiler.srcsBeforeGen = android.PathsForModuleSrcExcludes(ctx, srcs, exclude_srcs)
 		compiler.srcsBeforeGen = append(compiler.srcsBeforeGen, deps.GeneratedSources...)
 	}
