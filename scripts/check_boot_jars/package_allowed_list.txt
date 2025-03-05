@@ -267,7 +267,7 @@ com\.google\.wear
 com\.google\.wear\..*
 
 # LineageOS
-vendor.lineage.touch.*
+vendor.lineage.*
 
 # CodeAurora IMS functionality needed by frameworks/opt/telephony
 # as part of "ims-ext-common"
