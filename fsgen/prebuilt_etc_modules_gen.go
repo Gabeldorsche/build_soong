@@ -202,6 +202,7 @@ var (
 		"first_stage_ramdisk": etc.PrebuiltFirstStageRamdiskFactory,
 		"fonts":               etc.PrebuiltFontFactory,
 		"framework":           etc.PrebuiltFrameworkFactory,
+		"gpu":                 etc.PrebuiltGpuFactory,
 		"lib":                 etc.PrebuiltRenderScriptBitcodeFactory,
 		"lib64":               etc.PrebuiltRenderScriptBitcodeFactory,
 		"lib/rfsa":            etc.PrebuiltRFSAFactory,

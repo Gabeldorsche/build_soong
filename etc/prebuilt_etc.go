@@ -72,6 +72,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_wallpaper", PrebuiltWallpaperFactory)
 	ctx.RegisterModuleType("prebuilt_priv_app", PrebuiltPrivAppFactory)
 	ctx.RegisterModuleType("prebuilt_radio", PrebuiltRadioFactory)
+	ctx.RegisterModuleType("prebuilt_gpu", PrebuiltGpuFactory)
 	ctx.RegisterModuleType("prebuilt_rfs", PrebuiltRfsFactory)
 	ctx.RegisterModuleType("prebuilt_framework", PrebuiltFrameworkFactory)
 	ctx.RegisterModuleType("prebuilt_res", PrebuiltResFactory)
@@ -883,6 +884,16 @@ func PrebuiltPrivAppFactory() android.Module {
 func PrebuiltRadioFactory() android.Module {
 	module := &PrebuiltEtc{}
 	InitPrebuiltEtcModule(module, "radio")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+// prebuilt_gpu installs files in <partition>/gpu directory.
+func PrebuiltGpuFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "gpu")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
